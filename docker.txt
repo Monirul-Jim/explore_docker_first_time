@@ -1,5 +1,8 @@
 Learn from this simple project
-docker build -t  ts-docker:v1 .
+docker build -t  ts-docker-monirul:v1 .                                                 --- this is for build image
 docker images
-docker run -p 5000:5000 --name ts-docker-container --rm  ts-docker
-docker container ls
+docker run -p 5000:5000 --name ts-docker-container-monirul --rm  ts-docker              --- this is for run container
+docker container ls                                                                     --- this is for show all container
+docker container stop ts-docker-container-monirul                                        --- this is for stop a container
+docker container start --attach ts-docker-container-monirul                             --- this is for run container in attack mood
+docker container prune                                                                   --- for delete all container
