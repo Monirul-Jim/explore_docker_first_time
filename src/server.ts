@@ -1,14 +1,14 @@
 import { Server } from "http";
 import app from "./app";
 import { errorlogger, logger } from "./app/src/shared/logger";
-const port = 5000;
+
 let server: Server;
 
 async function main() {
   try {
-    server = app.listen(port, () => {
-      console.log(`app is listening on port ${port}`);
-      logger.info(`app is listening on port ${port}`);
+    server = app.listen(process.env.PORT, () => {
+      console.log(`app is listening on port ${process.env.PORT}`);
+      logger.info(`app is listening on port ${process.env.PORT}`);
     });
   } catch (err) {
     console.log(err);

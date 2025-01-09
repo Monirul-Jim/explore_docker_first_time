@@ -4,7 +4,7 @@ docker images
 docker run -p 5000:5000 --name ts-docker-container-monirul --rm  ts-docker              ---- this is for run container
 docker container ls                                                                     ---- this is for show all container
 docker container stop ts-docker-container-monirul                                       ---- this is for stop a container
-docker container start --attach ts-docker-container-monirul                             ---- this is for run container in attack mood
+docker container start --attach ts-docker-container-monirul                             ---- this is for run container in attach mood
 docker container prune                                                                  ---- for delete all container
 
 
@@ -12,3 +12,14 @@ docker container prune                                                          
  docker volume ls                                                                                              ----- show all volume
  docker run -p 5000:5000 --name ts-container-monirul --rm -v ts-docker-logs:/app/logs  ts-docker-monirul:v2    ----- named volume
  docker volume rm ts-container-monirul                                                                         ----- for delete volume
+
+ --------------------------------------------- Bind Mount  --------------------------------------------
+ 
+docker run -p 5000:5000 --name ts-container-monirul  -v  ts-docker-logs://app/logs -w //app  -v "//d/NextLevel/docker-with-typescript-backend"://app -v //app/node_modules  --rm ts-docker-monirul:v1
+docker run -p 5000:5000 --name ts-container-monirul  -v  ts-docker-logs://app/logs -w //app  -v "//$(pwd)"://app -v //app/node_modules  --rm --env-file ./.env ts-docker-monirul:v1
+
+------- if use powershell terminal-------
+docker run -p 5000:5000 --name ts-container-monirul  -v  ts-docker-logs://app/logs -w //app  -v "//${pwd}://app" -v //app/node_modules  --rm ts-docker-monirul:v1    -just {} use
+
+ ---------cmd-------------------
+docker run -p 5000:5000 --name ts-container-monirul  -v  ts-docker-logs://app/logs -w //app  -v "%cd%"://app -v //app/node_modules  --rm ts-docker-monirul:v1  
